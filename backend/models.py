@@ -3,9 +3,13 @@ from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-# database_name = 'trivia'
-database_path = 'postgresql://rock:123@localhost:5432/trivia'
-#database_path = 'postgresql://{}/{}'.format('localhost:5432', database_name)
+database_name = 'trivia'
+
+#   use this path when running with local postgres server
+#   database_path = 'postgresql://rock:123@localhost:5432/trivia'
+
+ #   use this path when submitting project for review
+database_path = 'postgresql://{}/{}'.format('localhost:5432', database_name)
 
 db = SQLAlchemy()
 
