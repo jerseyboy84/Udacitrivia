@@ -2,9 +2,10 @@ import os
 import unittest
 import json
 from flask_sqlalchemy import SQLAlchemy
-
+from settings import DB_NAME, DB_USER, DB_PASSWORD
 from flaskr import create_app
 from models import setup_db, Question, Category
+
 
 
 class TriviaTestCase(unittest.TestCase):
@@ -14,10 +15,10 @@ class TriviaTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = create_app()
         self.client = self.app.test_client
-        self.database_name = "trivia_test"
 
     #   use this path when submitting project for review
-        self.database_path = "postgres://{}/{}".format('localhost:5432', self.database_name)
+        self.database_name= DB_NAME
+        self.database_path = 'postgresql://{}:{}@{}/{}'.format(DB_USER,DB_PASSWORD,'localhost:5432', self.database_name)
 
     #   use this path when running with local postgres server
     #   self.database_path = 'postgresql://rock:123@localhost:5432/trivia_test'
